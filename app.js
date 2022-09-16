@@ -8,6 +8,7 @@ const mainRouter = require('./routes/main')
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 const { route } = require('./routes/main');
+const port = process.env.PORT || 3000;
 
 // middleware
 app.use(express.static('./public'));
@@ -18,10 +19,7 @@ app.use('/api/v1',mainRouter)
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-
-
-const port = process.env.PORT || 3000;
-
+//Starting the server
 const start = async () => {
   try {
     app.listen(port, () =>
